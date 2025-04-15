@@ -1,26 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华越通 - 创新引领未来</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #4fc3f7;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        section {
+            padding: 6rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .services {
+            background-color: #f1f7fd;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            height: 150px;
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .social-links li {
+            margin: 0 1rem;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">华越通</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>创新引领未来</h1>
+        <p>华越通致力于为客户提供最优质的解决方案，助力企业数字化转型，共创美好未来。</p>
+        <a href="#contact" class="btn">联系我们</a>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">关于我们</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>我们的故事</h3>
+                <p>华越通成立于2015年，是一家专注于企业数字化转型的高科技公司。我们的团队由行业资深专家和技术精英组成，致力于为客户提供创新的解决方案。</p>
+                <p>多年来，我们帮助数百家企业实现了业务升级和数字化转型，赢得了客户的广泛赞誉和行业的高度认可。</p>
+                <p>我们的使命是通过技术创新推动企业发展，创造更大的社会价值。</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="团队照片">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="services">
+    <div class="container">
+        <h2 class="section-title">我们的服务</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>企业软件开发</h3>
+                <p>定制化企业级软件解决方案，满足您的业务需求，提升工作效率。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>移动应用开发</h3>
+                <p>跨平台移动应用开发，让您的业务随时随地触手可及。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>云计算服务</h3>
+                <p>安全可靠的云计算解决方案，助力企业实现数字化转型。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>数据分析</h3>
+                <p>专业的数据分析与可视化服务，帮助您从数据中发现商业价值。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>人工智能</h3>
+                <p>前沿AI技术应用，为企业创造智能化解决方案。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>网络安全</h3>
+                <p>全面的网络安全服务，保护您的数字资产安全无忧。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="contact" class="contact">
     <div class="container">
         <h2 class="section-title">联系我们</h2>
         <div class="contact-form">
-            <form action="mailto:3304798180@qq.com" method="post" enctype="text/plain">
+            <form>
                 <div class="form-group">
                     <label for="name">姓名</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">邮箱</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">电话</label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone">
                 </div>
                 <div class="form-group">
                     <label for="message">留言</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <textarea id="message" required></textarea>
                 </div>
                 <button type="submit" class="btn">发送信息</button>
             </form>
         </div>
     </div>
 </section>
+
+<footer>
+    <div class="container">
+        <div class="logo">华越通</div>
+        <ul class="social-links">
+            <li><a href="#">微信</a></li>
+            <li><a href="#">微博</a></li>
+            <li><a href="#">领英</a></li>
+            <li><a href="#">抖音</a></li>
+        </ul>
+        <p>© 2023 华越通科技有限公司. 保留所有权利.</p>
+        <p>地址: 珠海市金湾区金岛路一号</p>
+    </div>
+</footer>
+</body>
+</html>
